@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'page.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOJO/NINJA TEMPLATE</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1> *~~DOJO & NINJAS!~~*</h1>
+        <h3>Add A Dojo! <span> &#9786; </span> <img src="{% static 'photos/dojo.png' %}" /> </h3>
+        <form action="/make_new_dojo" method="post">
+        {% csrf_token %} 
+            <h4>Dojo Name</h4>
+            <input type="text" id="dojo_name" name="dojo_name">
+
+            <h4>City</h4>
+            <input type="text" id="city" name="city">
+
+            <h4>State (ABBREVIATION)</h4>
+            <input type="text" id="state" name="state">
+
+            <h4>Description</h4>
+            <input type="text" id="description" name="description">
+
+            <button>Create Dojo!</button>
+        
+        </form>
+
+        <h3>Make A Ninja & Assign To A Dojo! <span> &#9786; </span><img src="{% static 'photos/ninja.png' %}" /> </h3>
+        <form action="/make_new_ninja" method="post">
+        {% csrf_token %} 
+            <h4>First Name</h4>
+            <input type="text" id="first_name" name="first_name">
+
+            <h4>Last Name</h4>
+            <input type="text" id="last_name" name="last_name">
+            
+            <h4> Select Your Dojo!</h4>
+            <select name='dojo'>
+                {% for dojo in all_dojos %}
+                <option value="{{dojo.id}}">{{dojo.name}}</option>
+                {% endfor %}
+            </select>
+
+            <button>Create Ninja!</button>
+        </form>
+    
+    <table>
+        <thead>
+            <th>Dojo Name</th>
+            <th>Dojo City</th>
+            <th>Dojo State</th>
+            <th>Dojo Description</th>
+            <th>Dojo Ninjas</th>
+        </thead>
+
+    <tbody>
+    {% for dojo in all_dojos %}
+        <tr>
+            <td>{{dojo.name}}
+                <button><a href="/delete_dojo/{{dojo.id}}">DELETE DOJO</a></button>
+            </td>
+            <td>{{dojo.city}}</td>
+            <td>{{dojo.state}}</td>
+            <td>{{dojo.description}}</td>
+            <td>
+            {% for ninja in dojo.ninjas.all %}
+            <p>{{ninja.first_name}} {{ninja.last_name}} </p>
+            {% endfor %}
+            </td>
+    {% endfor %}
+        </tr>
+    
+    </tbody>
+    </table>
+    </div>
+</body>
+</html>

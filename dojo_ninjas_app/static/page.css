@@ -1,0 +1,65 @@
+* {
+    margin:0px;
+    padding:0px;
+    font-family:'Cutive Mono', monospace;
+}
+
+#wrapper {
+    margin:0 auto;
+    width:850px;
+}
+
+table {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width:100%;
+}
+
+span {
+    content: "\263A";
+}
+
+table, th, td{
+    border:1px solid rgb(145, 142, 142);
+}
+
+th{
+    background-color: rgb(156, 198, 211);
+}
+
+th, td{
+    padding:10px;
+}
+
+form{
+    background-color: rgb(230, 230, 230);
+    padding:15px;
+    margin-top: 10px;
+    border:1px solid rgb(145, 142, 142);
+}
+
+button{
+    margin-top: 5px;
+    display:block;
+}
+
+select{
+    margin-top:10px;
+    margin-bottom:10px;
+    display:block;
+}
+
+span {
+    color:rgba(206, 159, 197, 0.53);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img{
+    margin-top: 10px;
+    display:inline-block;
+    height:70px;
+}
